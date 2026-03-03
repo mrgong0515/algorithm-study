@@ -1,20 +1,25 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-int solution(const char* s1[], int s1_len, const char* s2[], int s2_len)
+// s1_len은 배열 s1의 길이입니다.
+// s2_len은 배열 s2의 길이입니다.
+// 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
+int solution(const char* s1[], size_t s1_len, const char* s2[], size_t s2_len) 
 {
     int answer = 0;
-
-    for (int i = 0; i < s1_len; i++)      
+    
+    for (int i = 0; i < s1_len; i++)
     {
-        for (int j = 0; j < s2_len; j++)  
+        for (int j = 0; j < s2_len; j++)
         {
-            if (strcmp(s1[i], s2[j]) == 0) 
-            {
-                answer++;                 
-            }
+            int *a = s1[i];
+            int *b = s2[j];
+            
+            if (*a == *b)
+                answer++;
         }
     }
-
+    
     return answer;
 }
